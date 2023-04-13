@@ -12,6 +12,8 @@ export function BaseLayout({ children, appBarTitle }: BaseLayoutProps) {
         </Toolbar>
       </AppBar>
       <Box display="flex"
+      width = "75vw"
+      height= "50vh"
         padding='50px'
         border='1px solid #4a126b'
         margin='50px'
