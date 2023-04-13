@@ -14,6 +14,8 @@ export function BaseLayout({ children, appBarTitle }: BaseLayoutProps) {
       <Box display="flex"
       width = "75vw"
       height= "50vh"
+      justifyContent="space-around"
+      alignItems="center"
         padding='50px'
         border='1px solid #4a126b'
         margin='50px'
