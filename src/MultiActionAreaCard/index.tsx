@@ -5,28 +5,36 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Avatar } from '@mui/material';
 
-export default function MultiActionAreaCard() {
+type MultiActionAreaCardProps = {
+  linkGit: string,
+  fotoGit: string,
+  nomeGit: string,
+}
+
+export default function MultiActionAreaCard({ linkGit, fotoGit, nomeGit }: MultiActionAreaCardProps) {
   return (
-    <Card sx={{
-      width: '40%',
+    <Card elevation={0} sx={{
+      width: '50%',
+      height: '90%',
       padding: '15px',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
+      justifyContent: 'space-between'
     }}>
 
-      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg"
-        sx={{ width: 100, height: 100 }} />
+      <Avatar alt="Remy Sharp" src={fotoGit}
+        sx={{ width: 120, height: 120 }} />
 
       <CardContent>
-        <Typography variant="button" fontSize={19} display="block" gutterBottom>
-          nome variavel
+        <Typography variant="button" fontSize={30} fontWeight='300' display="block" gutterBottom>
+          {nomeGit}
         </Typography>
       </CardContent>
 
       <CardActions>
         <Button size="small" color="primary">
-          Github/
+          {linkGit}
         </Button>
       </CardActions>
 

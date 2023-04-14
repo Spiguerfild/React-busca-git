@@ -1,4 +1,4 @@
-import { Card, CssBaseline, Paper, TextField, Typography } from '@mui/material'
+import { Button, Card, CssBaseline, Paper, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { BaseLayout } from './layout/BaseLayout'
@@ -6,9 +6,29 @@ import MultiActionAreaCard from './MultiActionAreaCard'
 import { Theme } from './ThemeProvider'
 import img from '/iconmonstr-github-4.svg'
 import GitHubIcon from '@mui/icons-material/GitHub';
+import SearchIcon from '@mui/icons-material/Search';
 {/*token perfil git meu: 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*/ }
+
+type AppProps = {
+  fotoGit: string
+}
+
 function App() {
   const [count, setCount] = useState(0)
+
+  const [nome, setNome] = useState("");
+ 
+  const getUser = async function () {
+    const response = await fetch(`https://api.github.com/users/${nome}`)
+    const data = await response.json();
+    console.log(data)
+   return data;
+  }
+  
+
+  const changeInputHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNome(event.target.value);
+  };
 
   return (
     <>
@@ -26,33 +46,66 @@ function App() {
           }}>
 
 
-            <Card elevation={0} sx={{
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              textAlign: 'center',
-              justifyContent: 'center'
-            }}>
-              <GitHubIcon sx={{ fontSize: 60 }} />
-              <Typography margin={0} variant="h3" display="block" gutterBottom>
-                Search Profile
-              </Typography>
-            </Card>
-
 
             <Card
-            elevation={0}
-            sx={{
-              width: '100%',
-              height:'80%',
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-              textAlign: 'center',
-            }}>
-              <TextField id="standard-basic" label="Git Name" variant="standard" />
+              elevation={10}
+              sx={{
+                width: '100%',
+                height: '80%',
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                textAlign: 'center',
 
-              <MultiActionAreaCard />
+              }}>
+
+              <Card
+                elevation={0}
+                sx={{
+
+                  display: 'flex',
+                  padding: '20px',
+                  height: '90%',
+                  justifyContent: 'space-between',
+                  alignItems: 'stretch',
+                  flexDirection: 'column',
+                }}>
+
+
+                <Card elevation={0} sx={{
+                  display: 'flex',
+                  gap: '30px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '100%',
+
+                }}>
+                  <GitHubIcon sx={{ fontSize: 60 }} />
+                  <Typography margin={0} variant="h3" fontSize={40} textAlign={'center'} display="block" gutterBottom>
+                    Search Profile
+                  </Typography>
+                </Card>
+
+
+
+                <Card elevation={0}
+                  sx={{
+                    display: 'flex',
+                    gap: '10px',
+                    padding: ' 10px 0 10px 0'
+                  }}>
+                  <TextField onChange={changeInputHandle} id="standard-basic" label="Git Name" sx={{
+                    height: '50px',
+                    width: '90%',
+                  }}
+                    variant="outlined" />
+                  <Button variant="outlined" onClick={getUser} size='small' sx={{ border: '1px solid #c4c4c4', height: '100%', }}><SearchIcon fontSize='large' /></Button>
+                </Card>
+
+              </Card>{/*Button e text field*/}
+
+              <MultiActionAreaCard fotoGit={} linkGit='data.html_url' nomeGit='data.login'/>
+
             </Card>
 
           </Card>
