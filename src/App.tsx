@@ -25,7 +25,7 @@ function App() {
       const data = await response.json();
       console.log("data", data)
 
-      setNomeGit(data.name)
+      setNomeGit(data.login)
       setFotoGit(data.avatar_url)
       setLinkGit(data.html_url)
 

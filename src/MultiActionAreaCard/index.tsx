@@ -39,6 +39,10 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
       alignItems: 'center',
       justifyContent: 'space-evenly',
       background: 'transparent',
+      border: '15px double #a700fd',
+      borderRadius: '50px',
+      backgroundColor: '#000',
+      color: 'white',
     }}>
 
       <Avatar alt="Remy Sharp" src={fotoGit}
@@ -58,8 +62,9 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
 
         }}>
           <a href={linkGit} style={{
-            color: 'red',
-            textDecoration: 'none'
+            color: '#a700fd',
+            textDecoration: 'none',
+            fontWeight: '500'
           }}>{linkGit}</a>
         </Button>
       </CardActions>
