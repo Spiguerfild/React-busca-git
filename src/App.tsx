@@ -9,26 +9,45 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import SearchIcon from '@mui/icons-material/Search';
 {/*token perfil git meu: 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*/ }
 
-type AppProps = {
-  fotoGit: string
-}
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  const [nome, setNome] = useState("");
- 
-  const getUser = async function () {
-    const response = await fetch(`https://api.github.com/users/${nome}`)
-    const data = await response.json();
-    console.log(data)
-   return data;
+  const [nome, setNome] = useState('');
+  const [nomeGit, setNomeGit] = useState('');
+  const [fotoGit, setFotoGit] = useState('');
+  const [linkGit, setLinkGit] = useState('');
+
+  const handleClick = async () => {
+    console.log("clicou")
+
+    try {
+      const response = await fetch(`https://api.github.com/users/${nome}`)
+      const data = await response.json();
+      console.log("data", data)
+
+      setNomeGit(data.name)
+      setFotoGit(data.avatar_url)
+      setLinkGit(data.html_url)
+
+    } catch (error) {
+      console.log(error)
+    }
+
+
+
+
   }
-  
 
-  const changeInputHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNome(event.target.value);
-  };
+
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    console.log(e.target.value)
+    setNome(e.target.value)
+  }
+
+
+
 
   return (
     <>
@@ -94,17 +113,17 @@ function App() {
                     gap: '10px',
                     padding: ' 10px 0 10px 0'
                   }}>
-                  <TextField onChange={changeInputHandle} id="standard-basic" label="Git Name" sx={{
+                  <TextField id="standard-basic" onChange={handleChange} label="Git Name" sx={{
                     height: '50px',
                     width: '90%',
                   }}
                     variant="outlined" />
-                  <Button variant="outlined" onClick={getUser} size='small' sx={{ border: '1px solid #c4c4c4', height: '100%', }}><SearchIcon fontSize='large' /></Button>
+                  <Button variant="outlined" onClick={handleClick} size='small' sx={{ border: '1px solid #c4c4c4', height: '100%', }}><SearchIcon fontSize='large' /></Button>
                 </Card>
 
               </Card>{/*Button e text field*/}
 
-              <MultiActionAreaCard fotoGit={} linkGit='data.html_url' nomeGit='data.login'/>
+              <MultiActionAreaCard foto={fotoGit} link={linkGit} nome={nomeGit} />
 
             </Card>
 

@@ -4,14 +4,32 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Avatar } from '@mui/material';
+import { useEffect, useState } from 'react';
+
 
 type MultiActionAreaCardProps = {
-  linkGit: string,
-  fotoGit: string,
-  nomeGit: string,
+  nome: string,
+  foto: string,
+  link: string
 }
 
-export default function MultiActionAreaCard({ linkGit, fotoGit, nomeGit }: MultiActionAreaCardProps) {
+
+export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAreaCardProps) {
+
+  const [fotoGit, setFotoGit] = useState('')
+  const [linkGit, setLinkGit] = useState('')
+  const [nomeGit, setNomeGit] = useState('')
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    setFotoGit(foto);
+    console.log("mudou foto")
+    setLinkGit(link)
+    setNomeGit(nome)
+  });
+
+
+
   return (
     <Card elevation={0} sx={{
       width: '50%',
@@ -34,7 +52,7 @@ export default function MultiActionAreaCard({ linkGit, fotoGit, nomeGit }: Multi
 
       <CardActions>
         <Button size="small" color="primary">
-          {linkGit}
+          <a href={linkGit}>{linkGit}</a>
         </Button>
       </CardActions>
 
