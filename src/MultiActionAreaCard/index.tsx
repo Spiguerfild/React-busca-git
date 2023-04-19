@@ -32,7 +32,7 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
   return (
     <Card elevation={10} sx={{
       width: '45%',
-      height: '90%',
+      height: '100%',
       padding: '15px',
       display: 'flex',
       flexDirection: 'column',
@@ -40,7 +40,7 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
       justifyContent: 'space-evenly',
       background: 'transparent',
       border: '15px double #a700fd',
-      borderRadius: '50px',
+      borderRadius: '35px',
       backgroundColor: '#000',
       color: 'white',
     }}>
@@ -56,7 +56,7 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
 
       <CardActions>
         <Button size="small" color="primary" sx={{
-          fontSize: '19px',
+          fontSize: '18px',
           fontWeight: '500'
 
 

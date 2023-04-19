@@ -25,7 +25,7 @@ function App() {
       const data = await response.json();
       console.log("data", data)
 
-      setNomeGit(data.login)
+      setNomeGit(data.name)
       setFotoGit(data.avatar_url)
       setLinkGit(data.html_url)
 
@@ -88,7 +88,7 @@ function App() {
                   width: '100%',
 
                 }}>
-                  <GitHubIcon sx={{ fontSize: 60 }} />
+                  <GitHubIcon sx={{ fontSize: 80 }} />
                   <Typography margin={0} variant="h3" fontSize={40} textAlign={'center'} display="block" gutterBottom>
                     Search Profile
                   </Typography>

@@ -12,7 +12,7 @@ export function BaseLayout({ children, appBarTitle }: BaseLayoutProps) {
         </Toolbar>
       </AppBar>
       <Box display="flex"
-        width="80vw"
+        width="100%"
         height="75vh"
         justifyContent="space-around"
         alignItems="center"
