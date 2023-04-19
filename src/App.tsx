@@ -19,7 +19,6 @@ function App() {
   const [linkGit, setLinkGit] = useState('');
 
   const handleClick = async () => {
-    console.log("clicou")
 
     try {
       const response = await fetch(`https://api.github.com/users/${nome}`)
@@ -34,19 +33,7 @@ function App() {
       console.log(error)
     }
 
-
-
-
   }
-
-
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    console.log(e.target.value)
-    setNome(e.target.value)
-  }
-
-
 
 
   return (
@@ -55,19 +42,20 @@ function App() {
         <CssBaseline />
 
         <BaseLayout appBarTitle='Navsinha' >
-          <Card elevation={0} sx={{
+          <Card elevation={10} sx={{
             width: '100%',
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
+            borderRadius: '50px'
           }}>
 
 
 
             <Card
-              elevation={10}
+              elevation={0}
               sx={{
                 width: '100%',
                 height: '80%',
@@ -88,6 +76,7 @@ function App() {
                   justifyContent: 'space-between',
                   alignItems: 'stretch',
                   flexDirection: 'column',
+
                 }}>
 
 
@@ -111,14 +100,16 @@ function App() {
                   sx={{
                     display: 'flex',
                     gap: '10px',
-                    padding: ' 10px 0 10px 0'
+                    alignItems: 'center',
+
                   }}>
-                  <TextField id="standard-basic" onChange={handleChange} label="Git Name" sx={{
+                  <TextField id="standard-basic" onChange={(e) => setNome(e.target.value)} label="Git Name" sx={{
                     height: '50px',
                     width: '90%',
+                    margin: '15px 0',
                   }}
                     variant="outlined" />
-                  <Button variant="outlined" onClick={handleClick} size='small' sx={{ border: '1px solid #c4c4c4', height: '100%', }}><SearchIcon fontSize='large' /></Button>
+                  <Button variant="outlined" onClick={handleClick} size='small' sx={{ border: '1px solid #c4c4c4', height: '40px', width: '40px', minWidth: '0', }}><SearchIcon fontSize='large' /></Button>
                 </Card>
 
               </Card>{/*Button e text field*/}

@@ -23,7 +23,6 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
   useEffect(() => {
     // Update the document title using the browser API
     setFotoGit(foto);
-    console.log("mudou foto")
     setLinkGit(link)
     setNomeGit(nome)
   });
@@ -31,18 +30,19 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
 
 
   return (
-    <Card elevation={0} sx={{
-      width: '50%',
+    <Card elevation={10} sx={{
+      width: '45%',
       height: '90%',
       padding: '15px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'space-between'
+      justifyContent: 'space-evenly',
+      background: 'transparent',
     }}>
 
       <Avatar alt="Remy Sharp" src={fotoGit}
-        sx={{ width: 120, height: 120 }} />
+        sx={{ width: 150, height: 150 }} />
 
       <CardContent>
         <Typography variant="button" fontSize={30} fontWeight='300' display="block" gutterBottom>
@@ -51,8 +51,16 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
       </CardContent>
 
       <CardActions>
-        <Button size="small" color="primary">
-          <a href={linkGit}>{linkGit}</a>
+        <Button size="small" color="primary" sx={{
+          fontSize: '19px',
+          fontWeight: '500'
+
+
+        }}>
+          <a href={linkGit} style={{
+            color: 'red',
+            textDecoration: 'none'
+          }}>{linkGit}</a>
         </Button>
       </CardActions>
 
