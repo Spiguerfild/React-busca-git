@@ -7,25 +7,22 @@ import { Button, CardActionArea, CardActions, Avatar } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 
-type MultiActionAreaCardProps = {
-  nome: string,
-  foto: string,
-  link: string
+type DataProps = {
+
+  name: string,
+  avatar_url: string,
+  html_url: string,
+
 }
 
+type Request = {
 
-export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAreaCardProps) {
+  data: DataProps | undefined
 
-  const [fotoGit, setFotoGit] = useState('')
-  const [linkGit, setLinkGit] = useState('')
-  const [nomeGit, setNomeGit] = useState('')
+}
 
-  useEffect(() => {
-    // Update the document title using the browser API
-    setFotoGit(foto);
-    setLinkGit(link)
-    setNomeGit(nome)
-  });
+export default function MultiActionAreaCard({ data }: Request) {
+
 
 
 
@@ -45,12 +42,12 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
       color: 'white',
     }}>
 
-      <Avatar alt="Remy Sharp" src={fotoGit}
+      <Avatar alt="Remy Sharp" src={data?.avatar_url}
         sx={{ width: 150, height: 150 }} />
 
       <CardContent>
         <Typography variant="button" fontSize={30} fontWeight='300' display="block" gutterBottom>
-          {nomeGit}
+          {data?.name}
         </Typography>
       </CardContent>
 
@@ -61,11 +58,11 @@ export default function MultiActionAreaCard({ nome, foto, link }: MultiActionAre
 
 
         }}>
-          <a href={linkGit} style={{
+          <a href={data?.html_url} style={{
             color: '#a700fd',
             textDecoration: 'none',
             fontWeight: '500'
-          }}>{linkGit}</a>
+          }}>{data?.html_url}</a>
         </Button>
       </CardActions>
 

@@ -10,24 +10,27 @@ import SearchIcon from '@mui/icons-material/Search';
 {/*token perfil git meu: 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*/ }
 
 
+type DataProps = {
+
+  name: string,
+  avatar_url: string,
+  html_url: string
+
+}
+
 
 function App() {
 
-  const [nome, setNome] = useState('');
-  const [nomeGit, setNomeGit] = useState('');
-  const [fotoGit, setFotoGit] = useState('');
-  const [linkGit, setLinkGit] = useState('');
+  const [nome, setNome] = useState<string>('');
+  const [data, setData] = useState<DataProps>();
+
 
   const handleClick = async () => {
 
     try {
       const response = await fetch(`https://api.github.com/users/${nome}`)
-      const data = await response.json();
-      console.log("data", data)
-
-      setNomeGit(data.name)
-      setFotoGit(data.avatar_url)
-      setLinkGit(data.html_url)
+      const data: DataProps = await response.json();
+      setData(data);
 
     } catch (error) {
       console.log(error)
@@ -114,7 +117,8 @@ function App() {
 
               </Card>{/*Button e text field*/}
 
-              <MultiActionAreaCard foto={fotoGit} link={linkGit} nome={nomeGit} />
+              <MultiActionAreaCard
+                data={data} />
 
             </Card>
 
