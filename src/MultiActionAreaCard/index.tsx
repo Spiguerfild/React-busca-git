@@ -38,9 +38,8 @@ export default function MultiActionAreaCard({ data }: Request) {
       alignItems: 'center',
       gap: '10px',
       background: 'transparent',
-      border: '15px double #a700fd',
       borderRadius: '35px',
-      backgroundColor: '#000',
+      backgroundColor: '#cc00ff',
       color: 'white',
       textTransform: 'lowercase',
     }}>
@@ -49,16 +48,16 @@ export default function MultiActionAreaCard({ data }: Request) {
         sx={{ width: 150, height: 150 }} />
 
       <CardContent>
-        <Typography variant="button" fontSize={30} fontWeight='300' display="block" gutterBottom>
+        <Typography variant="button" fontSize={30} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
           {data?.name}
         </Typography>
       </CardContent>
 
-      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom>
+      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
         bio: {data?.bio}
       </Typography>
 
-      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom>
+      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
         {data?.public_repos == undefined ? <h2>Perfil não Encontrado </h2> : `Repositórios: ${+ data?.public_repos} `}
       </Typography>
 
@@ -70,7 +69,7 @@ export default function MultiActionAreaCard({ data }: Request) {
 
         }}>
           <a href={data?.html_url} style={{
-            color: '#a700fd',
+            color: '#000',
             textDecoration: 'none',
             fontWeight: '500'
           }}>{data?.html_url}</a>
