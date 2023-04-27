@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Avatar } from '@mui/material';
 import { useEffect, useState } from 'react';
+import FolderIcon from '@mui/icons-material/Folder';
 
 
 type DataProps = {
@@ -12,7 +13,8 @@ type DataProps = {
   name: string,
   avatar_url: string,
   html_url: string,
-
+  public_repos: string,
+  bio: string
 }
 
 type Request = {
@@ -34,12 +36,13 @@ export default function MultiActionAreaCard({ data }: Request) {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'space-evenly',
+      gap: '10px',
       background: 'transparent',
       border: '15px double #a700fd',
       borderRadius: '35px',
       backgroundColor: '#000',
       color: 'white',
+      textTransform: 'lowercase',
     }}>
 
       <Avatar alt="Remy Sharp" src={data?.avatar_url}
@@ -50,6 +53,14 @@ export default function MultiActionAreaCard({ data }: Request) {
           {data?.name}
         </Typography>
       </CardContent>
+
+      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom>
+        bio: {data?.bio}
+      </Typography>
+
+      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom>
+        {data?.public_repos == undefined ? <h2>Perfil não Encontrado </h2> : `Repositórios: ${+ data?.public_repos} `}
+      </Typography>
 
       <CardActions>
         <Button size="small" color="primary" sx={{
@@ -64,9 +75,8 @@ export default function MultiActionAreaCard({ data }: Request) {
             fontWeight: '500'
           }}>{data?.html_url}</a>
         </Button>
+
       </CardActions>
-
-
     </Card>
   );
 }

@@ -7,7 +7,7 @@ import { Theme } from './ThemeProvider'
 import img from '/iconmonstr-github-4.svg'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SearchIcon from '@mui/icons-material/Search';
-{/*token perfil git meu: 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*/ }
+
 
 
 type DataProps = {
@@ -15,11 +15,13 @@ type DataProps = {
   name: string,
   avatar_url: string,
   html_url: string
-
+  public_repos: string
+  bio: string
 }
 
 
 function App() {
+
 
   const [nome, setNome] = useState<string>('');
   const [data, setData] = useState<DataProps>();
@@ -29,11 +31,12 @@ function App() {
 
     try {
       const response = await fetch(`https://api.github.com/users/${nome}`)
+
       const data: DataProps = await response.json();
       setData(data);
 
     } catch (error) {
-      console.log(error)
+      console.log('erro = ' + error)
     }
 
   }
@@ -112,13 +115,13 @@ function App() {
                     margin: '15px 0',
                   }}
                     variant="outlined" />
-                  <Button variant="outlined" onClick={handleClick} size='small' sx={{ border: '1px solid #c4c4c4', height: '40px', width: '40px', minWidth: '0', }}><SearchIcon fontSize='large' /></Button>
+                  <Button variant="outlined" onClick={handleClick} size='small' sx={{ border: '1px solid #c4c4c4', height: '40px', width: '40px', minWidth: '0', }}>
+                    <SearchIcon fontSize='large' /></Button>
                 </Card>
 
               </Card>{/*Button e text field*/}
 
-              <MultiActionAreaCard
-                data={data} />
+              <MultiActionAreaCard data={data} />
 
             </Card>
 
