@@ -1,15 +1,15 @@
 import React, { Children } from "react"
 type BaseRootProps = {
-children: React.ReactNode,
+    children: React.ReactNode,
 }
 import './style.css'
 
-export function BaseRoot({children}: BaseRootProps){
-    return(
+export function BaseRoot({ children }: BaseRootProps) {
+    return (
         <>
-        <div className="Base-raiz">
-        {children}
-        </div>
+            <div className="Base-raiz">
+                {children}
+            </div>
         </>
     )
 }

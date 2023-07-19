@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Avatar } from '@mui/material';
 import { useEffect, useState } from 'react';
 import FolderIcon from '@mui/icons-material/Folder';
-
+import textReduce from '../helpers/textReduce'
 
 type DataProps = {
 
@@ -30,48 +30,48 @@ export default function MultiActionAreaCard({ data }: Request) {
 
   return (
     <Card elevation={10} sx={{
-      width: '45%',
-      height: '100%',
+      width: '80%',
       padding: '15px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       gap: '10px',
       background: 'transparent',
-      borderRadius: '35px',
-      backgroundColor: '#cc00ff',
+      borderRadius: '5px',
+
+
       color: 'white',
       textTransform: 'lowercase',
     }}>
 
-      <Avatar alt="Remy Sharp" src={data?.avatar_url}
-        sx={{ width: 150, height: 150 }} />
-
+      {data && data.avatar_url && (
+        < Avatar alt="Remy Sharp" src={data?.avatar_url}
+          sx={{ width: 100, height: 100 }} />
+      )}
       <CardContent>
-        <Typography variant="button" fontSize={30} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
+        <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom sx={{ padding: '0', color: 'black' }}>
           {data?.name}
         </Typography>
       </CardContent>
 
-      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
-        bio: {data?.bio}
+      <Typography variant="button" fontSize={15} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
+        {textReduce(data?.bio)}
       </Typography>
 
-      <Typography variant="button" fontSize={20} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
-        {data?.public_repos == undefined ? <h2>Perfil não Encontrado </h2> : `Repositórios: ${+ data?.public_repos} `}
+      <Typography variant="button" fontSize={15} fontWeight='300' display="block" gutterBottom sx={{ color: 'black' }}>
+        {data?.public_repos == undefined ? '' : `Repositórios: ${+ data?.public_repos} `}
       </Typography>
 
       <CardActions>
         <Button size="small" color="primary" sx={{
           fontSize: '18px',
           fontWeight: '500'
-
-
         }}>
           <a href={data?.html_url} style={{
             color: '#000',
             textDecoration: 'none',
-            fontWeight: '500'
+            fontWeight: '500',
+            fontSize: '15px'
           }}>{data?.html_url}</a>
         </Button>
 
