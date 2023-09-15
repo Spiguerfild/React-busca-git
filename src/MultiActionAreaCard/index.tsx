@@ -32,13 +32,13 @@ export default function MultiActionAreaCard({ data }: Request) {
     <Card elevation={10} sx={{
       width: '80%',
       padding: '15px',
+      margin: '20px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       gap: '10px',
       background: 'transparent',
       borderRadius: '5px',
-
 
       color: 'white',
       textTransform: 'lowercase',
@@ -63,14 +63,14 @@ export default function MultiActionAreaCard({ data }: Request) {
       </Typography>
 
       <CardActions>
-        <Button size="small" color="primary" sx={{
+        <Button size="small" variant='outlined' sx={{
           fontSize: '18px',
           fontWeight: '500'
         }}>
           <a href={data?.html_url} style={{
             color: '#000',
             textDecoration: 'none',
-            fontWeight: '500',
+            fontWeight: '600',
             fontSize: '15px'
           }}>{data?.html_url}</a>
         </Button>

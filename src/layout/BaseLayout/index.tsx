@@ -23,8 +23,8 @@ export function BaseLayout({ children, appBarTitle }: BaseLayoutProps) {
         padding: '10px',
         // border: '5px solid #fff',
         backgroundColor: '#38454c',
-        margin: '50px',
-        marginTop: '200px'
+        margin: '50px 30px',
+        marginTop: '100px'
       }}
       // boxShadow='rgba(0, 0, 0, 0.24) 0px 3px 8px;'
       // borderRadius={15}

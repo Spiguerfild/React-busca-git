@@ -57,10 +57,14 @@ function App() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-around',
-            // borderRadius: '50px'
+            padding: '20px'
           }}>
 
 
+            <GitHubIcon sx={{ fontSize: 100 }} />
+            <Typography margin={0} variant="h3" fontSize={65} textAlign={'center'} display="block" gutterBottom>
+              Search Profile
+            </Typography>
 
             <Card
               elevation={0}
@@ -73,68 +77,22 @@ function App() {
                 textAlign: 'center',
 
               }}>
+              <TextField id="standard-basic" onChange={(e) => setNome(e.target.value)} label="Git Name" sx={{
+                height: '50px',
+                width: '90%',
+                margin: '15px 0',
+              }}
+                variant="outlined" />
+              <Button variant="outlined" onClick={handleClick} size='small' sx={{ border: '1px solid #c4c4c4', height: '40px', width: '40px', minWidth: '0', }}>
+                <SearchIcon fontSize='large' /></Button>
 
-
-              <Grid container sx={{ padding: '50px' }}>
-                <Grid item xs={12} sm={6} >
-
-                  <Card
-                    elevation={0}
-                    sx={{
-
-                      display: 'flex',
-                      padding: '20px',
-                      height: '90%',
-                      justifyContent: 'space-between',
-                      alignItems: 'stretch',
-                      flexDirection: 'column',
-
-                    }}>
-
-
-                    <Card elevation={0} sx={{
-                      display: 'flex',
-                      gap: '30px',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '100%',
-                    }}>
-                      <GitHubIcon sx={{ fontSize: 80 }} />
-                      <Typography margin={0} variant="h3" fontSize={40} textAlign={'center'} display="block" gutterBottom>
-                        Search Profile
-                      </Typography>
-                    </Card>
-
-
-
-                    <Card elevation={0}
-                      sx={{
-                        display: 'flex',
-                        gap: '10px',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginTop: '20px'
-                      }}>
-                      <TextField id="standard-basic" onChange={(e) => setNome(e.target.value)} label="Git Name" sx={{
-                        height: '50px',
-                        width: '90%',
-                        margin: '15px 0',
-                      }}
-                        variant="outlined" />
-                      <Button variant="outlined" onClick={handleClick} size='small' sx={{ border: '1px solid #c4c4c4', height: '40px', width: '40px', minWidth: '0', }}>
-                        <SearchIcon fontSize='large' /></Button>
-                    </Card>
-
-                  </Card>
-                </Grid>
-
-                <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80%', maxWidth: '100%' }} xs={12} sm={6} >
-                  <MultiActionAreaCard data={data} />
-                </Grid>
-
-              </Grid>
             </Card>
+            {data && (
+              <MultiActionAreaCard data={data} />
+            )}
+
           </Card>
+
 
         </BaseLayout >
 
